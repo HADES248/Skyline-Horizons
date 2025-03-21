@@ -3,7 +3,7 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-primary: #6366f1; 
+  --color-primary: #6366f1;
 }
 
 :root {
@@ -27,4 +27,8 @@ body {
 
 body::-webkit-scrollbar {
   width: 0;
+}
+
+h1 {
+  font-size: x-large;
 }
