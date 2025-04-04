@@ -1,8 +1,19 @@
+import Image from "next/image";
+
 export default function Contact() {
   return (
-    <div className="max-w-screen-2xl flex flex-col md:flex-row-reverse justify-between items-center 2xl:mx-auto">
-      <img src="contact-page.png" className="hidden sm:inline h-[565px] w-[450px] lg:w-[600px] xl:w-[800px]" />
-      <div className="p-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-gray-700 rounded-lg shadow-lg w-[280px] mt-4 sm:w-[430px] sm:ml-6 xl:ml-12">
+    <div className="container flex flex-col md:flex-row-reverse justify-between items-center">
+      <div className="w-auto hidden md:inline xl:w-[678px] mx-auto">
+        <Image
+          src="/contact-page.png"
+          alt="home image"
+          width={680}
+          height={700}
+          quality={100}
+          priority={true}
+          className="lg:rounded-br-xl 2xl:rounded-b-xl" />
+      </div>
+      <div className="p-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-gray-700 rounded-lg shadow-lg w-[290px] mt-6 sm:w-[430px] sm:ml-6 xl:ml-12">
         <form className="mb-6 w-full max-w-sm 2xl:mx-auto">
           <div className="mb-6">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-200">Your email</label>

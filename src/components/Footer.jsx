@@ -1,5 +1,4 @@
 import Link from "next/link"
-
 export default function Footer() {
   return (
       <footer className="rounded-t-lg shadow-sm bg-gray-900">
@@ -19,7 +18,7 @@ export default function Footer() {
             </ul>
           </div>
           <hr className="my-6 sm:mx-auto border-gray-700 lg:my-8" />
-          <span className="block text-sm sm:text-center text-gray-400">© 2025 <Link href="/" className="hover:underline">Skyline Horizons™</Link>. All Rights Reserved.</span>
+          <span className="block text-sm sm:text-center text-gray-400">© 2025 Skyline Horizons™. All Rights Reserved.</span>
         </div>
       </footer>
   )

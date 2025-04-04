@@ -1,14 +1,22 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export default function About() {
   return (
     <>
-      <div className="max-w-screen-2xl flex justify-center flex-col-reverse lg:flex-row items-center 2xl:mx-auto">
+      <div className="max-w-screen-2xl flex justify-center flex-col lg:flex-row-reverse items-center 2xl:mx-auto">
+        <Image
+          src="/about-page.jpg"
+          alt="about image"
+          width={1100}
+          height={800}
+          quality={100}
+          priority={true}
+          className="lg:w-[55%] lg:rounded-bl-xl 2xl:rounded-b-xl" />
         <div className="flex flex-col justify-center items-center p-4">
           <h1 className="text-2xl mb-6"><b>About Us</b></h1>
           <p>At Skyline Horizons, we are more than just a real estate company; we are your trusted partner in navigating the dynamic and ever-evolving property market. With a keen eye for detail and a commitment to excellence, we specialize in connecting you with your dream home, office space, or investment property.</p>
         </div>
-        <img className="w-5xl lg:w-[650px] xl:w-[800px] lg:rounded-bl-xl 2xl:rounded-b-xl" src="about-page.jpg" alt="" />
       </div>
       <div className="max-w-screen-2xl mt-4 2xl:mx-auto p-8">
         <h1 className="text-2xl flex justify-center items-center mb-8 pt-8 border-t-1"><b>Why Skyline Horizons?</b></h1>
@@ -31,7 +39,6 @@ export default function About() {
           </svg>
           Contact us</Link> today and let us help you find your horizon.</p>
       </div>
-
     </>
   )
 }

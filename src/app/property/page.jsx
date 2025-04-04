@@ -1,3 +1,4 @@
+import Image from "next/image"
 export default function Property() {
   return (
     <div className="container flex flex-col justify-center items-center">
@@ -43,7 +44,12 @@ export default function Property() {
           <input type="text" id="rooms" className="border text-sm rounded-lg block w-1/2 my-4 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Rooms" required />
         </div>
         <div className="w-auto md:w-[500px] items-center flex flex-col justify-center">
-          <img src="property-page.png" />
+          <Image src="/property-page.png" alt="property image"
+            width={240}
+            height={180}
+            quality={100}
+            priority={true}
+            className="w-[240px] h-[180px]" />
           <label className="block mb-2 text-sm font-medium text-white" htmlFor="multiple_files">Upload multiple files (Max 6)</label>
           <input type="file" className="block w-[200px] md:w-[400px] h-[50px] text-sm pl-2 pt-3.5 rounded-lg cursor-pointer bg-gray-700 border-gray-600" id="multiple_files" multiple maxLength={6} />
           <button className="relative inline-flex items-center justify-center p-0.5 ml-1 mb-2 me-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white text-white mt-8">
