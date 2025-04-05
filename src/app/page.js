@@ -4,11 +4,11 @@ export default function Home() {
   return (
     <>
       <div className="container flex flex-col lg:flex-row items-center justify-between">
-        <div className="w-auto lg:w-[880px] xl:w-[1000px] mx-auto">
+        <div className="w-auto lg:w-[70%] mx-auto">
           <Image
             src="/front-page.jpg"
             alt="home image"
-            width={1100}
+            width={1000}
             height={800}
             quality={100}
             priority={true}

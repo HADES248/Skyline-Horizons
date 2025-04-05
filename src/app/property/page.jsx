@@ -2,7 +2,7 @@ import Image from "next/image"
 export default function Property() {
   return (
     <div className="container flex flex-col justify-center items-center">
-      <h1 className="inline mt-4 font-semibold bg-clip-text text-transparent bg-gradient-to-br from-purple-600 to-blue-600">Create a Property Listing!</h1>
+      <h1 className="inline mt-2 font-semibold bg-clip-text text-transparent bg-gradient-to-br from-purple-600 to-blue-800">Create a Property Listing!</h1>
       <div className="items-center flex flex-col lg:flex-row justify-center">
         <div className="w-auto sm:w-[500px] mt-8">
           <p className='flex justify-center items-center mb-2'>Details</p>
@@ -43,9 +43,9 @@ export default function Property() {
           <input type="text" id="price" className="border text-sm rounded-lg block w-1/2 my-4 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Price" required />
           <input type="text" id="rooms" className="border text-sm rounded-lg block w-1/2 my-4 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Rooms" required />
         </div>
-        <div className="w-auto md:w-[500px] items-center flex flex-col justify-center">
+        <div className="w-[60%] items-center flex flex-col justify-center">
           <Image src="/property-page.png" alt="property image"
-            width={240}
+            width={300}
             height={180}
             quality={100}
             priority={true}

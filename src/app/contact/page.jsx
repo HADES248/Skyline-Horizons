@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Contact() {
   return (
-    <div className="container flex flex-col md:flex-row-reverse justify-between items-center">
-      <div className="w-auto hidden md:inline xl:w-[678px] mx-auto">
+    <div className="container flex flex-col md:flex-row-reverse justify-between items-center md:items-start">
+      <div className="hidden md:inline w-[49%] mx-auto">
         <Image
           src="/contact-page.png"
           alt="home image"
@@ -13,17 +13,17 @@ export default function Contact() {
           priority={true}
           className="lg:rounded-br-xl 2xl:rounded-b-xl" />
       </div>
-      <div className="p-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-gray-700 rounded-lg shadow-lg w-[290px] mt-6 sm:w-[430px] sm:ml-6 xl:ml-12">
-        <form className="mb-6 w-full max-w-sm 2xl:mx-auto">
-          <div className="mb-6">
+      <div className="p-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-gray-700 rounded-lg shadow-lg w-[290px] mt-4 sm:w-[430px] sm:ml-6 xl:ml-16">
+        <form className="mb-4 w-full max-w-sm 2xl:mx-auto">
+          <div className="mb-4">
             <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-200">Your email</label>
             <input type="email" id="email" className="border text-sm rounded-lg block w-full p-2.5 bg-gray-900 border-gray-700 placeholder-gray-500 text-gray-200 focus:ring-blue-500 focus:border-blue-500" placeholder="name@company.com" required />
           </div>
-          <div className="mb-6">
+          <div className="mb-4">
             <label htmlFor="subject" className="block mb-2 text-sm font-medium text-gray-200">Subject</label>
             <input type="text" id="subject" className="border text-sm rounded-lg block w-full p-2.5 bg-gray-900 border-gray-700 placeholder-gray-500 text-gray-200 focus:ring-blue-500 focus:border-blue-500" placeholder="Let us know how we can help you" required />
           </div>
-          <div className="mb-6">
+          <div className="mb-4">
             <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-200">Your message</label>
             <textarea id="message" rows="4" className="block p-2.5 w-full text-sm rounded-lg border bg-gray-900 border-gray-700 placeholder-gray-500 text-gray-200 focus:ring-blue-500 focus:border-blue-500" placeholder="Your message..."></textarea>
           </div>
