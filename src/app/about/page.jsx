@@ -8,7 +8,7 @@ export default function About() {
         <Image
           src="/about-page.jpg"
           alt="about image"
-          width={1100}
+          width={1500}
           height={800}
           quality={100}
           priority={true}

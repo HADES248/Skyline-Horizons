@@ -8,8 +8,8 @@ export default function LogIn() {
         <Image
           src="/log-in.jpg"
           alt="Log in image"
-          width={1000}
-          height={500}
+          width={800}
+          height={450}
           quality={100}
           priority={true}
           className="h-[565px] hidden sm:block sm:w-[50%] md:w-[60%] object-cover"

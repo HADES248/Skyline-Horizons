@@ -8,8 +8,8 @@ export default function Contact() {
         <Image
           src="/contact-page.png"
           alt="home image"
-          width={680}
-          height={700}
+          width={1176}
+          height={980}
           quality={100}
           priority={true}
           className="lg:rounded-br-xl 2xl:rounded-b-xl" />

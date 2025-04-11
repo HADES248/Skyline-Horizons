@@ -84,8 +84,8 @@ export default function PropertyForm() {
       </div>
       <div className="w-[60%] items-center flex flex-col justify-center">
         <Image src="/property-page.png" alt="property image"
-          width={300}
-          height={180}
+          width={275}
+          height={183}
           quality={100}
           priority={true}
           style={{
