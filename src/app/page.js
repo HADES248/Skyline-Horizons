@@ -8,8 +8,8 @@ export default function Home() {
           <Image
             src="/front-page.jpg"
             alt="home image"
-            width={1200}
-            height={800}
+            width={1150}
+            height={764}
             quality={100}
             priority={true}
             className="lg:rounded-br-xl 2xl:rounded-b-xl" />
