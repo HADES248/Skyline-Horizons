@@ -8,7 +8,7 @@ export default function Home() {
           <Image
             src="/front-page.jpg"
             alt="home image"
-            width={1000}
+            width={1200}
             height={800}
             quality={100}
             priority={true}
