@@ -13,7 +13,7 @@ export default function About() {
           quality={100}
           priority={true}
           className="lg:w-[55%] lg:rounded-bl-xl 2xl:rounded-b-xl" />
-        <div className="flex flex-col justify-center items-center p-4">
+        <div className="flex flex-col justify-center items-center p-4 lg:w-[45%]">
           <h1 className="text-2xl mb-6"><b>About Us</b></h1>
           <p>At Skyline Horizons, we are more than just a real estate company; we are your trusted partner in navigating the dynamic and ever-evolving property market. With a keen eye for detail and a commitment to excellence, we specialize in connecting you with your dream home, office space, or investment property.</p>
         </div>

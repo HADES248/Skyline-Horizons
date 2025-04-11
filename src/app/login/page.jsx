@@ -14,7 +14,7 @@ export default function LogIn() {
           priority={true}
           className="h-[565px] hidden sm:block sm:w-[50%] md:w-[60%] object-cover"
         />
-        <div className="md:w-1/2 flex justify-center items-center mt-3 flex-col ml-4 md:ml-6 pr-6 mr-6 p-6 bg-gradient-to-r from-gray-800 via-gray-700 to bg-gray-800 border-gray-700 rounded-xl shadow-lg">
+        <div className="md:w-[40%] flex justify-center items-center mt-3 flex-col ml-4 md:ml-6 pr-6 mr-6 p-6 bg-gradient-to-r from-gray-800 via-gray-700 to bg-gray-800 border-gray-700 rounded-xl shadow-lg">
           <h1 className="2xl">Login to Skyline Horizons</h1>
           <LoginForm />
           <Link href='/signup' className="hover:text-primary mt-2">Don't have an account?</Link>
