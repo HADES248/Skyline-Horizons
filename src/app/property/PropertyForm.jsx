@@ -83,16 +83,14 @@ export default function PropertyForm() {
         <input type="number" id="rooms" className="border text-sm rounded-lg block w-1/2 my-4 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Rooms" max={30} min={1} onChange={(e) => { setRooms(e.target.value) }} value={rooms} required />
       </div>
       <div className="w-[60%] items-center flex flex-col justify-center">
-        <Image src="/property-page.png" alt="property image"
-          width={275}
-          height={183}
-          quality={100}
-          priority={true}
-          style={{
-            width: 'auto',
-            height: 'auto'
-          }}
-          className="w-[240px] h-[180px]" />
+        <div className="w-[240px] h-[180px]">
+          <Image src="/property-page.png" alt="property image"
+            width={275}
+            height={183}
+            quality={100}
+            priority={true}
+          />
+        </div>
         <label className="block mb-2 text-sm font-medium text-white" htmlFor="multiple_files">Upload multiple files (Max 4)</label>
         <input type="file" className="block w-[200px] md:w-[400px] h-[50px] text-sm pl-2 pt-3.5 rounded-lg cursor-pointer bg-gray-700 border-gray-600" id="multiple_files" multiple onChange={(e) => { handleUpload(e); setImages(e.target.files) }} />
         <span className="hidden text-red-800 text-sm mt-1" id="picture" >You can only Upload 4 pictures</span>
