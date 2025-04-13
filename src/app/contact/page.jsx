@@ -3,7 +3,7 @@ import ContactForm from "./ContactForm";
 
 export default function Contact() {
   return (
-    <div className="container flex flex-col md:flex-row-reverse justify-between items-center md:items-start">
+    <div className="container flex flex-col md:flex-row-reverse justify-between items-center">
       <div className="hidden md:inline w-[49%] mx-auto">
         <Image
           src="/contact-page.png"

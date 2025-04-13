@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Footer from '../components/Footer';
+import Card from '../components/Card'
 export default function Home() {
   return (
     <>
@@ -79,6 +80,10 @@ export default function Home() {
 
         {/* Houses */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 justify-items-center ml-4 mr-4">
+
+          <Card />
+
+
           <div className="card flex flex-col max-w-sm bg-gradient-to-l from-primary via-blue-400 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
             <Image
               className="rounded-t-2xl object-cover h-48"

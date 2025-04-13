@@ -19,9 +19,9 @@ export default function Navbar() {
     <nav className="bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" className="self-center text-lg sm:text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-cyan-300 to-85% to-primary bg-clip-text text-transparent">Skyline Horizons</Link>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <Link href="/login" type="button" className="text-white font-medium rounded-lg text-sm px-4 py-2 text-center cursor-pointer bg-primary hover:bg-blue-700">Login</Link>
-          <button type="button" id="hamburger" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm  rounded-lg md:hidden text-gray-400 hover:bg-gray-700 transition-all ease-in-out duration-300" onClick={navFunction}>
+        <div className="flex md:order-2 space-x-3 md:space-x-0">
+          <Link href="/login" type="button" className="text-white font-medium rounded-lg text-sm px-4 py-2 cursor-pointer bg-primary hover:bg-blue-700">Login</Link>
+          <button type="button" id="hamburger" className="inline-flex items-center p-2 w-8 h-8 justify-center text-sm  rounded-lg md:hidden text-gray-400 hover:bg-gray-700 transition-all ease-in-out duration-300" onClick={navFunction}>
             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
