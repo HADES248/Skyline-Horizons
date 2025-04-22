@@ -1,10 +1,38 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 export default function PropertyDetails() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [property, setProperty] = useState([]);
+
+  //using pathname to get the id of the property.
+  const pathname = usePathname();
+  const id = pathname.split('/')[1];
+
+
+  useEffect(() => {
+    const getProperty = async () => {
+      fetch('/api/property', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ id })
+      }).then((response) => {
+        try {
+          if (response.ok) {
+            response.json().then((data) => {
+              setProperty(data.property);
+            })
+          }
+        } catch (err) { console.log(err) }
+      })
+    }
+    getProperty();
+  }, [])
 
   const slides = [
     { src: '/front-page.jpg', alt: "first house" },
@@ -13,7 +41,7 @@ export default function PropertyDetails() {
     { src: '/about-page.jpg', alt: "fourth house" },
   ]
 
-  // making carousel move on swipe
+  // making carousel move on swipe.
   let startX = 0;
   const handleTouchStart = (e) => {
     // gets the start coordinate of touch.
@@ -41,8 +69,8 @@ export default function PropertyDetails() {
   return (
     <main className='container'>
       <div className="relative w-full">
-        <div className="relative h-[300px] sm:h-[400px] xl:mt-7 flex justify-center">
-          <Image className="absolute h-full w-full xl:w-[85%] xl:rounded-xl"
+        <div className="relative h-[300px] sm:h-[450px] xl:mt-7 flex justify-center">
+          <Image className="absolute h-full w-full xl:w-[75%] xl:rounded-xl"
             src={slides[currentIndex].src}
             width={1200}
             height={800}
@@ -68,23 +96,23 @@ export default function PropertyDetails() {
           </span>
         </button>
       </div>
-      <div className="mx-auto mt-20 mb-20 w-[83%] rounded-lg shadow-lg overflow-hidden bg-gradient-to-tr from-purple-600 via-blue-500 to-cyan-500">
+      <div className="mx-auto mt-8 mb-8 w-[73%] rounded-lg shadow-lg overflow-hidden bg-gradient-to-tr from-purple-700 via-blue-500 to-cyan-500">
         <div className="p-5">
-          <h1 className="text-2xl font-bold mb-2 text-gray-800">Forest Hills Villa</h1>
-          <h2 className="text-gray-300 mb-4">Perched amidst the misty embrace of the Silent Hill hills lies a sprawling mansion, its grandeur softened by the ghostly fog that clings to the landscape. This enigmatic house boasts towering gables, intricate wooden carvings, and an aura of mystery that captivates any passerby. Nestled away from prying eyes, it emanates a sense of isolation and untold stories, its windows revealing only shadows. The surrounding hills, shrouded in an eerie stillness, amplify the home's mystique. Each creak of its floors and whisper of the wind through its corridors suggests secrets waiting to be unveiled, blending beauty with an air of foreboding.</h2>
+          <h1 className="text-2xl font-bold mb-2 text-gray-800">{property.name}</h1>
+          <h2 className="text-gray-300 mb-4">{property.description}</h2>
           <div className="text-gray-300 text-sm mb-4">
-            <p><strong>Address:</strong> 671/81 Lake Avenue, Silent Hill</p>
-            <p><strong>Rooms:</strong> 8</p>
+            <p><strong>Address:</strong> {property.address}</p>
+            <p><strong>Rooms:</strong> {property.rooms}</p>
           </div>
           <div className="flex justify-between items-center">
             <button className={`text-xl font-bold text text-green-600 cursor-pointer `}>
-              Buy
+              {property.sell ? "For Sale" : "For Rent"}
             </button>
-            <p className="text-gray-800 font-bold">₹ 200000</p>
+            <p className="text-gray-800 font-bold">₹ {property.price}</p>
           </div>
-          <div className="flex justify-between mt-4 text-sm text-gray-300">
-            <p>Furnished</p>
-            <p>Parking</p>
+          <div className="flex justify-between items-center mt-2 text-sm text-gray-900">
+            <p><img src="bed.svg" alt="bed svg" className='w-8 m-2 pb-1 inline' /> {property.furnished ? "Furnished" : "Not Furnished"}</p>
+            <p><img src="car.svg" alt="bed svg" className='w-8 m-2 pb-1 inline'/>{property.parking ? "Parking" : "No Parking"}</p>
           </div>
         </div>
       </div>

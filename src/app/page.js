@@ -1,6 +1,8 @@
+'use client';
 import Image from 'next/image';
 import Footer from '../components/Footer';
-import Card from '../components/Card'
+import Card from "../components/Card";
+
 export default function Home() {
   return (
     <>
@@ -79,67 +81,10 @@ export default function Home() {
         </h1>
 
         {/* Houses */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 justify-items-center ml-4 mr-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6 justify-items-center ml-6 mr-6">
 
+          {/* Loading Houses */}
           <Card />
-
-
-          <div className="card flex flex-col max-w-sm bg-gradient-to-l from-primary via-blue-400 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
-            <Image
-              className="rounded-t-2xl object-cover h-48"
-              src="/front-page.jpg"
-              alt="House1"
-              width={500}
-              height={300}
-            />
-            <div className="p-6">
-              <span className="block text-xl font-semibold text-gray-100 mb-2">$ 20,000</span>
-              <h2 className="text-3xl font-bold mb-3">Forest Hills Villa</h2>
-              <p className="text-lg text-gray-200">Nestled in the serene embrace of Forest Hills, this ...</p>
-            </div>
-          </div>
-          <div className="card flex flex-col max-w-sm bg-gradient-to-l from-primary via-blue-400 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
-            <Image
-              className="rounded-t-2xl object-cover h-48"
-              src="/about-page.jpg"
-              alt="house2"
-              width={500}
-              height={300}
-            />
-            <div className="p-6">
-              <span className="block text-xl font-semibold text-gray-100 mb-2">$ 28,000</span>
-              <h2 className="text-3xl font-bold mb-3">Beach Side Villa</h2>
-              <p className="text-lg text-gray-200">Nestled in the serene embrace of Forest Hills, this ...</p>
-            </div>
-          </div>
-          <div className="card flex flex-col max-w-sm bg-gradient-to-l from-primary via-blue-400 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
-            <Image
-              className="rounded-t-2xl object-cover h-48"
-              src="/front-page.jpg"
-              alt="House1"
-              width={500}
-              height={300}
-            />
-            <div className="p-6">
-              <span className="block text-xl font-semibold text-gray-100 mb-2">$ 20,000</span>
-              <h2 className="text-3xl font-bold mb-3">Forest Hills Villa</h2>
-              <p className="text-lg text-gray-200">Nestled in the serene embrace of Forest Hills, this ...</p>
-            </div>
-          </div>
-          <div className="card flex flex-col max-w-sm bg-gradient-to-l from-primary via-blue-400 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out">
-            <Image
-              className="rounded-t-2xl object-cover h-48"
-              src="/front-page.jpg"
-              alt="House1"
-              width={500}
-              height={300}
-            />
-            <div className="p-6">
-              <span className="block text-xl font-semibold text-gray-100 mb-2">$ 20,000</span>
-              <h2 className="text-3xl font-bold mb-3">Forest Hills Villa</h2>
-              <p className="text-lg text-gray-200">Nestled in the serene embrace of Forest Hills, this ...</p>
-            </div>
-          </div>
         </div>
 
         {/* Reviews */}
