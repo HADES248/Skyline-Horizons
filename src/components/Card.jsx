@@ -14,7 +14,7 @@ export default function PropertyCard() {
 
     const getProperties = async () => {
 
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      await new Promise(resolve => setTimeout(resolve, 3000))
 
       try {
         const response = await fetch("/api/listing", {
@@ -30,7 +30,6 @@ export default function PropertyCard() {
         } else {
           console.error("Failed to Fetch Data");
         }
-
       } catch (err) {
         console.error("Failed to Fetch Data", err);
       } finally {
