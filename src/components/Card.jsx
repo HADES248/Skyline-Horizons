@@ -14,7 +14,7 @@ export default function PropertyCard() {
 
     const getProperties = async () => {
 
-      await new Promise(resolve => setTimeout(resolve, 3000))
+      await new Promise(resolve => setTimeout(resolve, 1000))
 
       try {
         const response = await fetch("/api/listing", {
