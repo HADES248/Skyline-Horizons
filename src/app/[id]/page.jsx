@@ -111,8 +111,16 @@ export default function PropertyDetails() {
             <p className="text-gray-800 font-bold">₹ {property.price}</p>
           </div>
           <div className="flex justify-between items-center mt-2 text-sm text-gray-900">
-            <p><img src="bed.svg" alt="bed svg" className='w-8 m-2 pb-1 inline' /> {property.furnished ? "Furnished" : "Not Furnished"}</p>
-            <p><img src="car.svg" alt="bed svg" className='w-8 m-2 pb-1 inline'/>{property.parking ? "Parking" : "No Parking"}</p>
+            {property.furnished ? <div className="flex items-center">
+              <img src="bed.svg" alt="bed svg" className='w-8 m-2 pb-1 inline' />
+              <p>Furnished</p>
+            </div> :
+              <p>Not Furnished</p>}
+            {property.parking ? <div className='flex items-center'>
+              <img src="car.svg" alt="car svg" className='w-8 m-2 pb-1 inline' />
+              <p>Parking</p>
+            </div> :
+              <p>No Parking</p>}
           </div>
         </div>
       </div>

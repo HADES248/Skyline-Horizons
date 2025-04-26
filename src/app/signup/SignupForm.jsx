@@ -1,22 +1,45 @@
 'use client';
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 export default function SignupForm() {
+
+  const router = useRouter();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [userExists, setUserExists] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const signupData = {
+    const userData = {
       name,
       email,
       password,
       phone
     }
-    console.log(signupData);
+
+    const response = await fetch("/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userData)
+    });
+
+    if (response.ok) {
+      setUserExists(false);
+      router.push("/")
+      alert("Welcome!" + userData.name);
+    } else {
+      const data = await response.json();
+      console.log(data);
+      if (data.message === "User already exists") {
+        setUserExists(true);
+      }
+    }
   }
 
   return (
@@ -28,14 +51,16 @@ export default function SignupForm() {
       <div className="relative z-0 w-full mb-6 group">
         <input type="email" id="email" className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " autoComplete="off" onChange={(e) => setEmail(e.target.value)} value={email} required />
         <label htmlFor="email" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+        {userExists ? <div className="text-red-500 text-sm mt-2">User already exists</div> : null}
       </div>
+
       <div className="relative z-0 w-full mb-6 group">
         <input type="password" id="password" className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none text-white border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " onChange={(e) => setPassword(e.target.value)} value={password} required />
         <label htmlFor="password" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
       </div>
       <div className="relative z-0 w-full mb-6 group">
         <input type="tel" id="phone" className="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none text-white border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " autoComplete="off" onChange={(e) => setPhone(e.target.value)} value={phone} required />
-        <label htmlFor="phone" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (+91 )</label>
+        <label htmlFor="phone" className="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number</label>
       </div>
       <div className="flex justify flex-col justify-center items-center mt-6">
         <button className="relative inline-flex items-center justify-center p-0.5 ml-1 mb-2 me-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white text-white">
