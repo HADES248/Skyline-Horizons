@@ -32,7 +32,7 @@ export default function SignupForm() {
     if (response.ok) {
       setUserExists(false);
       router.push("/")
-      alert("Welcome!" + userData.name);
+      alert("Welcome! " + userData.name);
     } else {
       const data = await response.json();
       console.log(data);

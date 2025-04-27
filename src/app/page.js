@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Footer from '../components/Footer';
 import Card from "../components/Card";
+import SearchBar from '@/components/SearchBar';
 
 export default function Home() {
   return (
@@ -18,17 +19,10 @@ export default function Home() {
             className="lg:rounded-br-xl 2xl:rounded-b-xl" />
         </div>
         <div className="md:w-1/2 flex justify-center items-center flex-col ml-4 md:ml-10 pr-6">
-          <h1 className="text-xl md:text-2xl mt-5">Welcome to Skyline Horizons</h1>
-          <form className="max-w-md w-full mt-5 rounded-lg">
-            <div className="relative">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                </svg>
-              </div>
-              <input type="search" id="default-search" className="block w-full p-4 ps-10 text-sm rounded-lg bg-gray-700 border-gray-600 placeholder-gray-400 text-white" placeholder="Search Houses, Villas..." />
-            </div>
-          </form>
+          <h1 className="text-xl md:text-2xl mt-5 font-bold">Welcome to Skyline Horizons</h1>
+
+          <SearchBar />
+
           <div className="flex justify-between flex-col sm:flex-row gap-5 mt-10">
             <div className="flex flex-col items-start justify-center">
               <dt className="mb-2 text-3xl font-extrabold">1000+</dt>
@@ -81,8 +75,7 @@ export default function Home() {
         </h1>
 
         {/* Houses */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 justify-items-center ml-6 mr-6">
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 justify-center items-center w-[95%] mx-auto">
           {/* Loading Houses */}
           <Card />
         </div>

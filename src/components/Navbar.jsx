@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-gray-900">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="container flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href="/" className="self-center text-lg sm:text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-cyan-300 to-85% to-primary bg-clip-text text-transparent">Skyline Horizons</Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0">
           <Link href="/login" type="button" className="text-white font-medium rounded-lg text-sm px-4 py-2 cursor-pointer bg-primary hover:bg-blue-700">Login</Link>
@@ -33,7 +33,10 @@ export default function Navbar() {
               <Link href="/about" className="block py-2 px-3 md:p-0 rounded-sm md:hover:text-primary text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent border-gray-700">About</Link>
             </li>
             <li>
-              <Link href="/property" className="block py-2 px-3 md:p-0 rounded-sm md:hover:text-primary text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent border-gray-700">Property</Link>
+              <Link href="/enlist" className="block py-2 px-3 md:p-0 rounded-sm md:hover:text-primary text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent border-gray-700">Enlist</Link>
+            </li>
+            <li>
+              <Link href="/property" className="block py-2 px-3 md:p-0 rounded-sm md:hover:text-primary text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent border-gray-700">Properties</Link>
             </li>
             <li>
               <Link href="/contact" className="block py-2 px-3 md:p-0 rounded-sm md:hover:text-primary text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent border-gray-700">Contact</Link>

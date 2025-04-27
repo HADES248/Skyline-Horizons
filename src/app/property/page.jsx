@@ -1,11 +1,13 @@
-import PropertyForm from "./PropertyForm";
+import SearchBar from '@/components/SearchBar'
+import Card from '@/components/Card'
 
-export default function Property() {
-
+export default function PropertyPage() {
   return (
-    <div className="container flex flex-col justify-center items-center">
-      <h1 className="inline mt-2 font-semibold bg-clip-text text-transparent bg-gradient-to-br from-purple-600 via-purple-800 to-blue-800">Create a Property Listing!</h1>
-      <PropertyForm/>
-    </div>
+    <main className="container flex flex-col justify-center items-center mt-4">
+      <SearchBar />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-[95%] gap-6 mt-6 justify-items-center">
+        <Card />
+      </div>
+    </main>
   )
 }
