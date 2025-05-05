@@ -96,7 +96,7 @@ export default function PropertyDetails() {
           </span>
         </button>
       </div>
-      <div className="mx-auto mt-8 mb-8 w-[73%] rounded-lg shadow-lg overflow-hidden bg-gradient-to-tr from-purple-700 via-blue-500 to-cyan-500">
+      <div className="mx-auto mt-8 mb-8 w-[73%] rounded-lg shadow-lg overflow-hidden bg-gradient-to-tr from-blue-700 via-blue-500 to-cyan-500">
         <div className="p-5">
           <h1 className="text-2xl font-bold mb-2 text-gray-800">{property.name}</h1>
           <h2 className="text-gray-300 mb-4">{property.description}</h2>

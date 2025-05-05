@@ -1,13 +1,11 @@
 'use client';
-import Card from '@/components/Card'
-import { CardContext } from '@/context/card';
-import { useContext, useEffect, useState } from 'react';
 
-export default function PropertyList() {
+import { useEffect, useState } from "react";
+import Card from "@/components/Card";
+
+export default function HouseList() {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { parking, furnished } = useContext(CardContext);
-  
   useEffect(() => {
 
     const getProperties = async () => {
@@ -16,11 +14,10 @@ export default function PropertyList() {
       await new Promise(resolve => setTimeout(resolve, 1000));
       try {
         const response = await fetch("/api/listing", {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ parking, furnished }),
         })
 
         if (response.ok) {
@@ -38,9 +35,8 @@ export default function PropertyList() {
 
     getProperties();
 
-  }, [parking, furnished])
+  }, [])
   return (
     <Card properties={properties} loading={loading} />
-
   )
 }

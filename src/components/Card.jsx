@@ -1,54 +1,14 @@
-'use client';
-import { useEffect, useState } from "react";
 import Image from "next/image"
 import Link from "next/link";
 import Skeletion from "./SkeletonCard";
 
-
-export default function PropertyCard() {
-
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-
-    const getProperties = async () => {
-
-      await new Promise(resolve => setTimeout(resolve, 1000))
-
-      try {
-        const response = await fetch("/api/listing", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          }
-        })
-
-        if (response.ok) {
-          const data = await response.json();
-          setProperties(data.properties)
-        } else {
-          console.error("Failed to Fetch Data");
-        }
-      } catch (err) {
-        console.error("Failed to Fetch Data", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getProperties();
-
-  }, [])
-
+export default function PropertyCard({ properties, loading }) {
   return (
     <>
       {loading ? (
-
         "abcdef".split('').map((i) => (
           <Skeletion key={i} />
         ))
-
       ) : (
         properties.map((property) => (
           <Link href={`/${property._id}`} className="flex flex-col w-full bg-gradient-to-l from-primary via-blue-400 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out" key={property._id}>
@@ -68,7 +28,6 @@ export default function PropertyCard() {
           </Link>
         ))
       )}
-
     </>
   )
 }

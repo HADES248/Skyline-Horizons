@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Footer from '../components/Footer';
 import Card from "../components/Card";
 import SearchBar from '@/components/SearchBar';
+import HouseList from './HouseList';
 
 export default function Home() {
   return (
@@ -77,7 +78,7 @@ export default function Home() {
         {/* Houses */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 justify-center items-center w-[95%] mx-auto">
           {/* Loading Houses */}
-          <Card />
+          <HouseList />
         </div>
 
         {/* Reviews */}
