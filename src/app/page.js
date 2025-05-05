@@ -19,7 +19,7 @@ export default function Home() {
             className="lg:rounded-br-xl 2xl:rounded-b-xl" />
         </div>
         <div className="md:w-1/2 flex justify-center items-center flex-col ml-4 md:ml-10 pr-6">
-          <h1 className="text-xl md:text-2xl mt-5 font-bold">Welcome to Skyline Horizons</h1>
+          <h1 className="text-xl md:text-2xl mt-5 mb-5 font-bold">Welcome to Skyline Horizons</h1>
 
           <SearchBar />
 

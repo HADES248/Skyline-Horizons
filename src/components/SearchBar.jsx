@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SearchBar() {
   return (
-    <form className="max-w-md w-[80%] sm:w-full mt-5 rounded-lg">
+    <form className="max-w-md w-[80%] sm:w-full rounded-lg">
       <div className="relative">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

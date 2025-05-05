@@ -3,25 +3,26 @@ import { propertyModel } from "@/lib/models/listing";
 
 export async function POST(req) {
 
-  const property = await req.json();
+  const { parking, furnished } = await req.json();
 
   await connectToDb();
 
-  await propertyModel.create(property).then(() => {
-    console.log("Property Enlisted");
-  });
+  const filter = {}
 
-  return Response.json({ message: "Property Enlisted Successfully!" }, { status: 200 });
-
+  if (parking) filter.parking = parking;
+  if (furnished) filter.furnished = furnished;
+  const properties = await propertyModel.find(filter);
+  return Response.json({ properties }, { status: 200 });
 }
+
 
 export async function GET() {
 
   await connectToDb();
-
-  const properties = await propertyModel.find();
+  const properties = await propertyModel.find().limit(5);
   if (!properties) {
-    return Response.json({ message: "there are no properties" }, { status: 404 });
+    return Response.json({ message: "No Properties Found" }, { status: 404 });
   }
   return Response.json({ properties }, { status: 200 });
 }
+
