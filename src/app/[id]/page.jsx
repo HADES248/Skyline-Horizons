@@ -70,7 +70,7 @@ export default function PropertyDetails() {
     <main className='container'>
       <div className="relative w-full">
         <div className="relative h-[300px] sm:h-[450px] xl:mt-7 flex justify-center">
-          <Image className="absolute h-full w-full xl:w-[75%] xl:rounded-xl"
+          <Image className="absolute h-full w-full xl:w-[75%] xl:rounded-2xl"
             src={slides[currentIndex].src}
             width={1200}
             height={800}
@@ -96,9 +96,9 @@ export default function PropertyDetails() {
           </span>
         </button>
       </div>
-      <div className="mx-auto mt-8 mb-8 w-[73%] rounded-lg shadow-lg overflow-hidden bg-gradient-to-tr from-blue-700 via-blue-500 to-cyan-500">
+      <div className="mx-auto mt-8 mb-8 w-[73%] rounded-2xl shadow-lg overflow-hidden bg-gradient-to-tr from-blue-700 via-blue-500 to-cyan-500">
         <div className="p-5">
-          <h1 className="text-2xl font-bold mb-2 text-gray-800">{property.name}</h1>
+          <h1 className="text-2xl font-bold mb-2 text-white/90">{property.name}</h1>
           <h2 className="text-gray-300 mb-4">{property.description}</h2>
           <div className="text-gray-300 text-sm mb-4">
             <p><strong>Address:</strong> {property.address}</p>
@@ -108,9 +108,9 @@ export default function PropertyDetails() {
             <button className={`text-xl font-bold text text-green-600 cursor-pointer `}>
               {property.sell ? "For Sale" : "For Rent"}
             </button>
-            <p className="text-gray-800 font-bold">₹ {property.price}</p>
+            <p className="text-white/90 font-bold">₹ {property.price}</p>
           </div>
-          <div className="flex justify-between items-center mt-2 text-sm text-gray-900">
+          <div className="flex justify-between items-center mt-2 text-sm text-white/90">
             {property.furnished ? <div className="flex items-center">
               <img src="bed.svg" alt="bed svg" className='w-8 m-2 pb-1 inline' />
               <p>Furnished</p>

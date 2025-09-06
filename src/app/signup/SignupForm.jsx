@@ -1,6 +1,8 @@
 'use client';
+import { UserContext } from "@/context/user";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
+
 export default function SignupForm() {
 
   const router = useRouter();
@@ -10,6 +12,7 @@ export default function SignupForm() {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [userExists, setUserExists] = useState(false);
+  const { setUser } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,8 +33,8 @@ export default function SignupForm() {
     });
 
     if (response.ok) {
-      setUserExists(false);
-      router.push("/")
+      setUser(userData);
+      router.push("/");
       alert("Welcome! " + userData.name);
     } else {
       const data = await response.json();

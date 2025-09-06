@@ -1,5 +1,4 @@
 'use client';
-
 import { useEffect, useState } from "react";
 import Card from "@/components/Card";
 
@@ -9,9 +8,9 @@ export default function HouseList() {
   useEffect(() => {
 
     const getProperties = async () => {
-      // Simulate a loading delay for filter
+      
       setLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+
       try {
         const response = await fetch("/api/listing", {
           method: "GET",
@@ -19,6 +18,9 @@ export default function HouseList() {
             "Content-Type": "application/json",
           },
         })
+        
+        // Simulate a loading delay for filter
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         if (response.ok) {
           const data = await response.json();

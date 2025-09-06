@@ -1,6 +1,5 @@
 'use client';
 import SearchBar from '@/components/SearchBar'
-import Card from '@/components/Card'
 import SidebarModal from '@/components/Sidebar';
 import { useState } from 'react';
 import PropertyList from './PropertyList';

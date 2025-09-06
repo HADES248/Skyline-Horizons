@@ -14,7 +14,7 @@ export default function Contact() {
           priority={true}
           className="lg:rounded-br-xl 2xl:rounded-b-xl" />
       </div>
-      <div className="p-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-gray-700 rounded-lg shadow-lg w-[290px] mt-4 sm:w-[430px] sm:ml-6 xl:ml-16">
+      <div className="p-6 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-gray-700 rounded-2xl shadow-lg w-[290px] mt-4 sm:w-[430px] sm:ml-6 xl:ml-16">
         <ContactForm />
         <div className="flex flex-col justify-center items-center">
           <p className="mb-2 text-lg sm:text-xl text-gray-200 inline">

@@ -1,6 +1,7 @@
 'use client';
+import { UserContext } from "@/context/user";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export default function LoginForm() {
 
@@ -11,6 +12,7 @@ export default function LoginForm() {
   const [remember, setRemeber] = useState(false);
   const [emailCheck, setEmailCheck] = useState(false);
   const [passwordCheck, setpasswordCheck] = useState(false);
+  const { setUser } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +37,7 @@ export default function LoginForm() {
       setEmailCheck(false);
       setpasswordCheck(false);
       router.push("/");
+      setUser(data.user);
       alert("Welcome! " + data.user.name);
     } else {
       const errorData = await response.json();
@@ -57,7 +60,7 @@ export default function LoginForm() {
       <div className="mb-5">
         <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">Your password</label>
         <input type="password" id="password" className="border text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" onChange={(e) => setPassword(e.target.value)} value={password} required />
-        {passwordCheck ? <div className="text-red-500 text-sm mt-2">Password is incorrect</div> : null}
+        {passwordCheck ? <div className="text-red-500 text-sm mt-2">Incorrect Password</div> : null}
       </div>
       <div className="flex items-start mb-5">
         <div className="flex items-center h-5">

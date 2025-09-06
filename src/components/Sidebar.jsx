@@ -18,7 +18,7 @@ export default function SidebarModal({ isOpen, onClose }) {
         // This function allows us to stop the click event from propagating to the parent div(the above main one), which would close the sidebar when we click inside it.
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="px-4 py-2 mx-2 my-2 text-sm rounded-lg bg-primary hover:text-cyan-600 cursor-pointer" onClick={onClose} >Close</button>
+        <button className="px-4 py-2 mx-2 my-2 text-sm rounded-lg text-white hover:text-gray-800 bg-primary hover:bg-white cursor-pointer" onClick={onClose} >Close</button>
         <div className="p-4">
           <h2 className="text-xl font-bold mb-4">Filter</h2>
           <ul>
