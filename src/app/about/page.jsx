@@ -6,7 +6,7 @@ export default function About() {
     <>
       <div className="max-w-screen-2xl flex justify-center flex-col lg:flex-row-reverse items-center 2xl:mx-auto">
         <Image
-          src="/about-page.jpg"
+          src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405244/about-page_n4nibu.jpg"
           alt="about image"
           width={1500}
           height={800}

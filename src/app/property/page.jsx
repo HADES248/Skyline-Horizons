@@ -10,7 +10,7 @@ export default function PropertyPage() {
   return (
     <main className="container flex flex-col justify-center items-center mt-8 mb-8">
       <div className="flex flex-row-reverse justify-center items-center w-full gap-6">
-        <img src="/filter.png" alt="filter img" className='w-8 cursor-pointer' onClick={() => setIsOpen(true)} />
+        <img src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405246/filter_dawyfg.png" alt="filter img" className='w-8 cursor-pointer' onClick={() => setIsOpen(true)} />
         <SearchBar />
       </div>
       <SidebarModal isOpen={isOpen} onClose={() => setIsOpen(false)} />

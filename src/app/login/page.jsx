@@ -6,7 +6,7 @@ export default function LogIn() {
     <div>
       <div className="container flex flex-col sm:flex-row items-center justify-between">
         <Image
-          src="/log-in.jpg"
+          src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405247/log-in_hyvjnl.jpg"
           alt="Login image"
           width={800}
           height={450}

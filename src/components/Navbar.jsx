@@ -28,7 +28,7 @@ export default function Navbar() {
           {user ? (
             <div className="relative inline-block">
               <img
-                src="user.png"
+                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405258/user_rsntru.png"
                 className="w-10 lg:mr-8 cursor-pointer transition-transform duration-300 hover:scale-110"
                 onClick={userDetails}
                 alt="User"

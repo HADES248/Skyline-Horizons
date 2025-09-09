@@ -68,7 +68,7 @@ export default function LoginForm() {
         </div>
         <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-300">Remember me</label>
       </div>
-      <button type="submit" className="text-white bg-primary focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center hover:bg-blue-700 cursor-pointer">Submit</button>
+      <button type="submit" className="text-white hover:text-gray-800 bg-primary hover:bg-white focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center cursor-pointer">Submit</button>
     </form>
   )
 }

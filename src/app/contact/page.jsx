@@ -6,7 +6,7 @@ export default function Contact() {
     <div className="container flex flex-col md:flex-row-reverse justify-between items-center">
       <div className="hidden md:inline w-[49%] mx-auto">
         <Image
-          src="/contact-page.png"
+          src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405257/contact-page_mj7iia.png"
           alt="home image"
           width={1176}
           height={980}

@@ -11,7 +11,7 @@ export default function Home() {
       <div className="container flex flex-col lg:flex-row items-center justify-between">
         <div className="w-auto lg:w-[70%] mx-auto">
           <Image
-            src="/front-page.jpg"
+            src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405253/front-page_k9xcmr.jpg"
             alt="home image"
             width={1150}
             height={764}
@@ -42,28 +42,28 @@ export default function Home() {
       </div>
       <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-4 justify-items-center items-center mt-14 mb-10">
         <div className="w-[180px] lg:w-[220px]">
-          <Image src="/no-broker.svg"
+          <Image src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405245/no-broker_r2zdrv.svg"
             width={250}
             height={250}
             alt="no-broker logo"
           />
         </div>
         <div className="w-[180px] lg:w-[220px]">
-          <Image src="/realty.png"
+          <Image src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/realty_qir6ec.png"
             width={250}
             height={250}
             alt="realty logo"
           />
         </div>
         <div className="w-[180px] lg:w-[220px]">
-          <Image src="/zillow.svg"
+          <Image src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405253/zillow_xexjaa.svg"
             width={250}
             height={250}
             alt="zillow logo"
           />
         </div>
         <div className="w-[180px] lg:w-[220px]">
-          <Image src="/equinix.png"
+          <Image src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405244/equinix_c2lb4p.png"
             width={250}
             height={250}
             alt="equinix logo"
@@ -101,7 +101,7 @@ export default function Home() {
                 <p className="my-2">The website offers a seamless browsing experience with user-friendly navigation. It simplifies property searches effectively.&#34;</p>
               </blockquote>
               <Image
-                src="/rating-45.png"
+                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-45_e9g5pf.png"
                 className="w-36 mb-8"
                 width={80}
                 height={80}
@@ -120,7 +120,7 @@ export default function Home() {
                 <p className="my-2">Whether you&#39;re buying or renting a property, their procedure is seamless!</p>
               </blockquote>
               <Image
-                src="/rating-50.png"
+                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-50_sx3gqf.png"
                 className="w-36 mb-8"
                 width={80}
                 height={80}
@@ -139,7 +139,7 @@ export default function Home() {
                 <p className="my-2">Provides accurate details about properties. The transparency builds trust and ensures informed decision-making for buyers and renters.&#34;</p>
               </blockquote>
               <Image
-                src="/rating-50.png"
+                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-50_sx3gqf.png"
                 className="w-36 mb-8"
                 width={80}
                 height={80}
@@ -158,7 +158,7 @@ export default function Home() {
                 <p className="my-2">Facilitates direct communication with property owners and agents. This feature saves time and eliminates unnecessary brokerage fees.&#34;</p>
               </blockquote>
               <Image
-                src="/rating-40.png"
+                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405248/rating-40_diobjy.png"
                 className="w-36 mb-8"
                 width={80}
                 height={80}

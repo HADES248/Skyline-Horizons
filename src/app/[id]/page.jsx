@@ -112,12 +112,12 @@ export default function PropertyDetails() {
           </div>
           <div className="flex justify-between items-center mt-2 text-sm text-white/90">
             {property.furnished ? <div className="flex items-center">
-              <img src="bed.svg" alt="bed svg" className='w-8 m-2 pb-1 inline' />
+              <img src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405241/bed_bqft6x.svg" alt="bed svg" className='w-8 m-2 pb-1 inline' />
               <p>Furnished</p>
             </div> :
               <p>Not Furnished</p>}
             {property.parking ? <div className='flex items-center'>
-              <img src="car.svg" alt="car svg" className='w-8 m-2 pb-1 inline' />
+              <img src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405242/car_j3trcu.svg" alt="car svg" className='w-8 m-2 pb-1 inline' />
               <p>Parking</p>
             </div> :
               <p>No Parking</p>}
