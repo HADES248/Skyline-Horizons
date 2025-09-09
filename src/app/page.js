@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
 import Footer from '../components/Footer';
-import Card from "../components/Card";
 import SearchBar from '@/components/SearchBar';
 import HouseList from './HouseList';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -80,11 +80,11 @@ export default function Home() {
           {/* Loading Houses */}
           <HouseList />
           
-            <a className="h-full bg-white opacity-60 hover:opacity-100 shadow-lg rounded-2xl flex items-center justify-center hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out" href='/property'>
+            <Link className="h-full bg-white opacity-60 hover:opacity-100 shadow-lg rounded-2xl flex items-center justify-center hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out" href='/property'>
               <button className="flex items-center space-x-2 text-indigo-600 font-semibold text-lg hover:scale-105 transition-transform duration-300">
                 <span>View All &rarr;</span>
               </button>
-            </a>
+            </Link>
           
         </div>
 
