@@ -6,7 +6,7 @@ export default function PropertyCard({ properties, loading }) {
   return (
     <>
       {loading ? (
-        "abcdef".split('').map((i) => (
+        "abcde".split('').map((i) => (
           <Skeletion key={i} />
         ))
       ) : (
@@ -14,8 +14,8 @@ export default function PropertyCard({ properties, loading }) {
           <Link href={`/${property._id}`} className="flex flex-col w-full bg-gradient-to-l from-primary via-blue-400 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out" key={property._id}>
             <Image
               className="rounded-t-2xl object-cover h-[3/4] w-full"
-              src="/front-page.jpg"
-              alt="House1"
+              src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405253/front-page_k9xcmr.jpg"
+              alt="house image"
               width={500}
               height={300}
               priority={false}

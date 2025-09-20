@@ -15,9 +15,16 @@ export default function PropertyForm() {
   const [rooms, setRooms] = useState(0);
   const [images, setImages] = useState([]);
 
+  const handleUploadSuccess = (result) => {
+    const uploadedImage = {
+      url: result.info.secure_url,
+      alt: result.info.original_filename
+    }
+    setImages((prevImage) => [...prevImage, uploadedImage])
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("form Submitted!");
 
     const propertyData = {
       title,
@@ -27,11 +34,10 @@ export default function PropertyForm() {
       rent,
       parking,
       furnished,
-      price,
-      rooms,
+      price: Number(price),
+      rooms: Number(rooms),
       images
     };
-    console.log(propertyData);
   }
   return (
     <form className="items-center flex flex-col lg:flex-row justify-center" onSubmit={handleSubmit}>
@@ -84,7 +90,7 @@ export default function PropertyForm() {
           />
         </div>
         <label className="block mb-2 text-sm font-medium text-white" htmlFor="multiple_files">Upload multiple files (Max 4)</label>
-        <CldUploadWidget uploadPreset="house_images" onSuccess={() => console.log("Done!")}>
+        <CldUploadWidget uploadPreset="house_images" onSuccess={handleUploadSuccess}>
           {({ open }) => (
             <button
               onClick={() => open()}

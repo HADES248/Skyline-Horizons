@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const propertySchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
   },
@@ -37,10 +37,12 @@ const propertySchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  images: {
-    type: Array,
-    required: true
-  }
+  images: [
+    {
+      url: { type: String, required: true },
+      alt: { type: String, required: true }
+    }
+  ]
 })
 
 export const propertyModel = mongoose.models.property || mongoose.model("property", propertySchema);
