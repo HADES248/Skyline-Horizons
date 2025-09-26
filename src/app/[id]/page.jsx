@@ -112,7 +112,7 @@ export default function PropertyDetails() {
       </div>
 
       {/* Property Info */}
-      <div className="mx-auto mt-8 mb-8 w-[73%] rounded-2xl shadow-lg overflow-hidden bg-gradient-to-l from-teal-600 to-primary">
+      <div className="mx-auto mt-8 mb-8 w-[90%] sm:w-[75%] rounded-2xl shadow-lg overflow-hidden bg-gradient-to-l from-teal-600 to-primary">
         <div className="p-5">
           <h1 className="text-2xl font-bold mb-2 text-white/90">{property.title}</h1>
           <h2 className="text-gray-300 mb-4">{property.description}</h2>

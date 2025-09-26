@@ -44,7 +44,7 @@ export default function HouseList() {
       <Card properties={properties} loading={loading} />
       {!loading && properties.length > 0 && (
         <Link
-          className="h-full bg-white opacity-60 hover:opacity-100 shadow-lg rounded-2xl flex items-center justify-center hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out"
+          className="h-10 sm:h-full bg-white opacity-60 hover:opacity-100 shadow-lg rounded-2xl flex items-center justify-center hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out"
           href="/property"
         >
           <button className="flex items-center space-x-2 text-indigo-600 font-semibold text-lg hover:scale-105 transition-transform duration-300">
