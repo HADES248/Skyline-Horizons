@@ -38,6 +38,19 @@ export default function PropertyForm() {
       rooms: Number(rooms),
       images
     };
+
+    const response = await fetch('/api/create', {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(propertyData)
+    });
+
+    if (response.ok){
+      alert("Property Enlisted Successfully!");
+      setImages([]);
+    }
   }
   return (
     <form className="items-center flex flex-col lg:flex-row justify-center" onSubmit={handleSubmit}>
@@ -54,13 +67,13 @@ export default function PropertyForm() {
         <div className="grid grid-cols-2 md:grid-cols-4 items-center mt-4">
           <div className="flex items-start mb-5">
             <div className="flex items-center h-5">
-              <input id="sell" type="checkbox" className="w-4 h-4 border rounded-sm bg-gray-700 border-gray-600 ring-offset-gray-800" required onChange={() => setSell(!sell)} />
+              <input id="sell" type="checkbox" className="w-4 h-4 border rounded-sm bg-gray-700 border-gray-600 ring-offset-gray-800" onChange={() => setSell(!sell)} />
             </div>
             <label htmlFor="sell" className="ms-2 text-sm font-medium text-gray-300">Sell</label>
           </div>
           <div className="flex items-start mb-5">
             <div className="flex items-center h-5">
-              <input id="rent" type="checkbox" className="w-4 h-4 border rounded-sm bg-gray-700 border-gray-600 ring-offset-gray-800" required onChange={() => setRent(!rent)} />
+              <input id="rent" type="checkbox" className="w-4 h-4 border rounded-sm bg-gray-700 border-gray-600 ring-offset-gray-800" onChange={() => setRent(!rent)} />
             </div>
             <label htmlFor="rent" className="ms-2 text-sm font-medium text-gray-300">Rent</label>
           </div>
@@ -89,10 +102,11 @@ export default function PropertyForm() {
             priority={true}
           />
         </div>
-        <label className="block mb-2 text-sm font-medium text-white" htmlFor="multiple_files">Upload multiple files (Max 4)</label>
+        <p className="block mb-2 text-sm font-medium text-white" htmlFor="multiple_files">Upload multiple files (Max 4)</p>
         <CldUploadWidget uploadPreset="house_images" onSuccess={handleUploadSuccess}>
           {({ open }) => (
             <button
+              type="button"
               onClick={() => open()}
               className="w-[200px] md:w-[400px] h-[50px] flex items-center justify-center rounded-lg 
              bg-gray-700 border border-gray-600 text-white text-sm font-medium 
@@ -103,7 +117,6 @@ export default function PropertyForm() {
             </button>
           )}
         </CldUploadWidget>
-        {/* <input type="file" className="block w-[200px] md:w-[400px] h-[50px] text-sm pl-2 pt-3.5 rounded-lg cursor-pointer bg-gray-700 border-gray-600" id="multiple_files" multiple onChange={(e) => { handleUpload(e); setImages(e.target.files) }} /> */}
         <span className="hidden text-red-800 text-sm mt-1" id="picture" >You can only Upload 4 pictures</span>
         <button type="submit" className="relative inline-flex items-center justify-center p-0.5 ml-1 mb-2 me-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white text-white mt-8">
           <span className="relative px-5 py-2 transition-all ease-in duration-75 bg-gray-800 rounded-md group-hover:bg-transparent cursor-pointer">

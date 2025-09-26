@@ -79,13 +79,6 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 justify-center items-center w-[95%] mx-auto">
           {/* Loading Houses */}
           <HouseList />
-
-          <Link className="h-full bg-white opacity-60 hover:opacity-100 shadow-lg rounded-2xl flex items-center justify-center hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out" href='/property'>
-            <button className="flex items-center space-x-2 text-indigo-600 font-semibold text-lg hover:scale-105 transition-transform duration-300">
-              <span>View All &rarr;</span>
-            </button>
-          </Link>
-
         </div>
 
         {/* Reviews */}

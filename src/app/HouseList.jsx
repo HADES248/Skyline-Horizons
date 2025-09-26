@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from "react";
 import Card from "@/components/Card";
+import Link from "next/link";
 
 export default function HouseList() {
   const [properties, setProperties] = useState([]);
@@ -8,7 +9,7 @@ export default function HouseList() {
   useEffect(() => {
 
     const getProperties = async () => {
-      
+
       setLoading(true);
 
       try {
@@ -18,7 +19,7 @@ export default function HouseList() {
             "Content-Type": "application/json",
           },
         })
-        
+
         // Simulate a loading delay for filter
         await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -39,6 +40,18 @@ export default function HouseList() {
 
   }, [])
   return (
-    <Card properties={properties} loading={loading} />
+    <>
+      <Card properties={properties} loading={loading} />
+      {!loading && properties.length > 0 && (
+        <Link
+          className="h-full bg-white opacity-60 hover:opacity-100 shadow-lg rounded-2xl flex items-center justify-center hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out"
+          href="/property"
+        >
+          <button className="flex items-center space-x-2 text-indigo-600 font-semibold text-lg hover:scale-105 transition-transform duration-300">
+            <span>View All &rarr;</span>
+          </button>
+        </Link>
+      )}
+    </>
   )
 }
