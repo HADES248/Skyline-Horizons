@@ -1,11 +1,12 @@
 'use client';
+import { CardContext } from '@/context/card';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 export default function SearchBar() {
+  const { setTitle } = useContext(CardContext);
   const router = useRouter();
   const [searchValue, setSearchValue] = useState('');
-
 
   useEffect(() => {
     const saved = localStorage.getItem('searchValue');
@@ -16,15 +17,10 @@ export default function SearchBar() {
     localStorage.setItem('searchValue', searchValue);
   }, [searchValue])
 
-  useEffect(() => {
-    const searchBar = document.querySelector("#search");
-    searchBar.addEventListener("input", (e) => {
-      console.log(e.target.value);
-    })
-  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setTitle(searchValue);
     router.push('/property');
   }
 

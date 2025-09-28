@@ -2,27 +2,47 @@ import { connectToDb } from "@/lib/mongodb/db";
 import { propertyModel } from "@/lib/models/listing";
 
 export async function POST(req) {
+  try {
+    const { parking, furnished, title } = await req.json();
 
-  const { parking, furnished } = await req.json();
+    await connectToDb();
 
-  await connectToDb();
+    const filter = {};
 
-  const filter = {}
+    if (title) {
+      filter.title = { $regex: title, $options: "i" };
+    }
+    if (parking) {
+      filter.parking = parking;
+    }
+    if (furnished) {
+      filter.furnished = furnished;
+    }
 
-  if (parking) filter.parking = parking;
-  if (furnished) filter.furnished = furnished;
-  const properties = await propertyModel.find(filter);
-  return Response.json({ properties }, { status: 200 });
+    const properties = await propertyModel.find(filter);
+
+    if (!properties.length) {
+      return Response.json({ message: "No properties found" }, { status: 404 });
+    }
+
+    return Response.json({ properties }, { status: 200 });
+  } catch (error) {
+    return Response.json({ message: "Server Error", error: error.message }, { status: 500 });
+  }
 }
-
 
 export async function GET() {
+  try {
+    await connectToDb();
 
-  await connectToDb();
-  const properties = await propertyModel.find().limit(5);
-  if (!properties) {
-    return Response.json({ message: "No Properties Found" }, { status: 404 });
+    const properties = await propertyModel.find().limit(5);
+
+    if (!properties.length) {
+      return Response.json({ message: "No properties found" }, { status: 404 });
+    }
+
+    return Response.json({ properties }, { status: 200 });
+  } catch (error) {
+    return Response.json({ message: "Server Error", error: error.message }, { status: 500 });
   }
-  return Response.json({ properties }, { status: 200 });
 }
-

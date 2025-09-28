@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import loading from '../loading';
 
 export default function PropertyDetails() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,10 +60,9 @@ export default function PropertyDetails() {
     if (!property?.images) return;
     setCurrentIndex(currentIndex === property.images.length - 1 ? 0 : currentIndex + 1);
   };
-  console.log(property)
 
   if (!property) {
-    return <p className="text-center mt-10 text-gray-400">Loading property...</p>;
+    return loading();
   }
 
   return (
