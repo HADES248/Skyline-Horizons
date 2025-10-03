@@ -38,7 +38,7 @@ export default function LoginForm() {
       setpasswordCheck(false);
       router.push("/");
       setUser(data.user);
-      alert("Welcome! " + data.user.name);
+      alert("Welcome! " + data.user.username);
     } else {
       const errorData = await response.json();
       if (errorData.message === "User Does not exist") {

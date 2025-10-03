@@ -129,7 +129,7 @@ export default function PropertyDetails() {
           <div className="flex justify-between items-center mt-2 text-sm text-white/90">
             {property.furnished ? (
               <div className="flex items-center">
-                <img src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757737449/b82dgptwtdxzllg65rvu.png" alt="bed svg" className='w-8 m-2 pb-1 inline' />
+                <img src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1759155162/wtugxveyozhmjmngb9qb.png" alt="bed icon" className='w-8 m-2 pb-1 inline' />
                 <p>Furnished</p>
               </div>
             ) : (
@@ -138,7 +138,7 @@ export default function PropertyDetails() {
 
             {property.parking ? (
               <div className='flex items-center'>
-                <img src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757737449/dlfwxroyxjedeqylk6cp.png" alt="car svg" className='w-8 m-2 pb-1 inline' />
+                <img src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1759155162/llxrkkdadpe10n5qspui.png" alt="car icon" className='w-8 m-2 pb-1 inline' />
                 <p>Parking</p>
               </div>
             ) : (

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
     required: true,
   },
@@ -14,10 +14,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
   phone: {
     type: Number,
     required: true,
   },
+  forgotPassowrdToken: String,
+  forgotPasswordTokenExpiry: Date,
+  verifyToken: String,
+  verifyTokenExpriy: Date
 });
 
-export const userModel = mongoose.models.user || mongoose.model("user", userSchema);
+export const userModel = mongoose.models.users || mongoose.model("users", userSchema);

@@ -4,8 +4,19 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 
 export default function Navbar() {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
+
+  const logout = async () => {
+    try {
+      await fetch('api/logout', {
+        method: 'GET',
+      })
+      alert('Logged Out successfully');
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
 
   const userDetails = () => {
@@ -39,10 +50,11 @@ export default function Navbar() {
                 id="user"
               >
                 <p className="font-bold pb-2 border-b border-gray-700">
-                  Name: {user.name.split(" ")[0]}
+                  Name: {user.username.split(" ")[0]}
                 </p>
                 <p className="font-bold mt-2">Email: {user.email}</p>
                 <button
+                  onClick={logout}
                   className="w-full text-white hover:text-gray-800 bg-primary hover:bg-white 
                     py-2 font-bold mt-4 rounded-xl cursor-pointer transition-colors duration-300"
                 >
