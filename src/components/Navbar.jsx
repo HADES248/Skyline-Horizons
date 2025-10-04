@@ -1,18 +1,20 @@
 'use client';
 import { UserContext } from "@/context/user";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 export default function Navbar() {
   const { user, setUser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [loading, setLoading] = useState(true); // local loading
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   // fetch user info on mount
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("/api/login");
+        const res = await fetch("/api/me");
         if (res.ok) {
           const data = await res.json();
           setUser(data.user || null);
@@ -22,7 +24,7 @@ export default function Navbar() {
       } catch (err) {
         setUser(null);
       } finally {
-        setLoading(false); // stop loading
+        setLoading(false);
       }
     };
     fetchUser();
@@ -33,6 +35,7 @@ export default function Navbar() {
       await fetch("/api/logout", { method: "GET" });
       setUser(null);
       alert("Logged Out successfully");
+      router.push('/');
     } catch (error) {
       console.log(error.message);
     }

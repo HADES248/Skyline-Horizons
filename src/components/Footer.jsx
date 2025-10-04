@@ -17,7 +17,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <hr className="my-6 sm:mx-auto border-gray-700 lg:my-8" />
+          <hr className="my-4 sm:mx-auto border-gray-700 lg:my-6" />
           <span className="block text-sm sm:text-center text-gray-400">© 2025 Skyline Horizons™. All Rights Reserved.</span>
         </div>
       </footer>
