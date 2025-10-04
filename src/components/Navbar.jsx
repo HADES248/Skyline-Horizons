@@ -1,26 +1,45 @@
 'use client';
 import { UserContext } from "@/context/user";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function Navbar() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true); // local loading
+
+  // fetch user info on mount
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/login");
+        if (res.ok) {
+          const data = await res.json();
+          setUser(data.user || null);
+        } else {
+          setUser(null);
+        }
+      } catch (err) {
+        setUser(null);
+      } finally {
+        setLoading(false); // stop loading
+      }
+    };
+    fetchUser();
+  }, [setUser]);
 
   const logout = async () => {
     try {
-      await fetch('api/logout', {
-        method: 'GET',
-      })
-      alert('Logged Out successfully');
+      await fetch("/api/logout", { method: "GET" });
+      setUser(null);
+      alert("Logged Out successfully");
     } catch (error) {
       console.log(error.message);
     }
-  }
-
+  };
 
   const userDetails = () => {
-    const details = document.getElementById('user');
+    const details = document.getElementById("user");
     details.classList.toggle("hidden");
   };
 
@@ -36,42 +55,46 @@ export default function Navbar() {
         </Link>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0">
-          {user ? (
-            <div className="relative inline-block">
-              <img
-                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405258/user_rsntru.png"
-                className="w-10 lg:mr-8 cursor-pointer transition-transform duration-300 hover:scale-110"
-                onClick={userDetails}
-                alt="User"
-              />
-              <div
-                className="absolute z-10 hidden top-full mt-2 w-64 right-0 lg:right-12 p-4 
-                  bg-gray-900 text-white rounded-xl shadow-lg transition-all duration-300"
-                id="user"
-              >
-                <p className="font-bold pb-2 border-b border-gray-700">
-                  Name: {user.username.split(" ")[0]}
-                </p>
-                <p className="font-bold mt-2">Email: {user.email}</p>
-                <button
-                  onClick={logout}
-                  className="w-full text-white hover:text-gray-800 bg-primary hover:bg-white 
-                    py-2 font-bold mt-4 rounded-xl cursor-pointer transition-colors duration-300"
+          {/* Render only after loading */}
+          {!loading && (
+            user ? (
+              <div className="relative inline-block">
+                <img
+                  src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405258/user_rsntru.png"
+                  className="w-10 lg:mr-8 cursor-pointer transition-transform duration-300 hover:scale-110"
+                  onClick={userDetails}
+                  alt="User"
+                />
+                <div
+                  className="absolute z-10 hidden top-full mt-2 w-64 right-0 lg:right-12 p-4 
+                    bg-gray-900 text-white rounded-xl shadow-lg transition-all duration-300"
+                  id="user"
                 >
-                  Logout
-                </button>
+                  <p className="font-bold pb-2 border-b border-gray-700">
+                    Name: {user.username.split(" ")[0]}
+                  </p>
+                  <p className="font-bold mt-2">Email: {user.email}</p>
+                  <button
+                    onClick={logout}
+                    className="w-full text-white hover:text-gray-800 bg-primary hover:bg-white 
+                      py-2 font-bold mt-4 rounded-xl cursor-pointer transition-colors duration-300"
+                  >
+                    Logout
+                  </button>
+                </div>
               </div>
-            </div>
-          ) : (
-            <Link
-              href="/login"
-              className="text-white hover:text-gray-800 bg-primary hover:bg-white font-medium 
-                rounded-lg text-sm px-4 py-2 cursor-pointer"
-            >
-              Login
-            </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="text-white hover:text-gray-800 bg-primary hover:bg-white font-medium 
+                  rounded-lg text-sm px-4 py-2 cursor-pointer"
+              >
+                Login
+              </Link>
+            )
           )}
 
+          {/* Hamburger menu */}
           <button
             type="button"
             id="hamburger"
