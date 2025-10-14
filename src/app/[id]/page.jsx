@@ -1,12 +1,13 @@
 'use client';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import loading from '../loading';
 
 export default function PropertyDetails() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [property, setProperty] = useState(null);
+  const [notFoundState, setNotFoundState] = useState(false);
 
   const params = useParams();
   const id = params.id;
@@ -21,6 +22,10 @@ export default function PropertyDetails() {
           },
           body: JSON.stringify({ id })
         });
+        if (response.status === 404) {
+          setNotFoundState(true);
+          return;
+        }
 
         if (response.ok) {
           const data = await response.json();
@@ -33,6 +38,8 @@ export default function PropertyDetails() {
 
     getProperty();
   }, [id]);
+
+  if (notFoundState) return notFound();
 
   // Carousel handlers
   let startX = 0;
