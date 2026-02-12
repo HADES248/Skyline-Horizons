@@ -9,9 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
     "better-auth": "^1.4.18",
-    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.2",
     "next": "15.2.8",
     "next-cloudinary": "^6.16.0",

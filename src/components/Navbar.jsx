@@ -1,14 +1,14 @@
 'use client';
 import { UserContext } from "@/context/user";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 export default function Navbar() {
   const { user, setUser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   // fetch user info on mount
   useEffect(() => {
@@ -21,24 +21,26 @@ export default function Navbar() {
         } else {
           setUser(null);
         }
-      } catch (err) {
+      } catch {
         setUser(null);
       } finally {
         setLoading(false);
       }
     };
+
     fetchUser();
-  }, [setUser]);
+  }, []);
+
 
   const logout = async () => {
-    try {
-      await fetch("/api/logout", { method: "GET" });
-      setUser(null);
-      alert("Logged Out successfully");
-      router.push('/');
-    } catch (error) {
-      console.log(error.message);
-    }
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          setUser(null);
+          redirect("/signin");
+        },
+      },
+    });
   };
 
   const userDetails = () => {
@@ -63,8 +65,9 @@ export default function Navbar() {
             user ? (
               <div className="relative inline-block">
                 <img
-                  src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405258/user_rsntru.png"
-                  className="w-10 lg:mr-8 cursor-pointer transition-transform duration-300 hover:scale-110"
+                  src={user?.image || "https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405258/user_rsntru.png"}
+                  referrerPolicy="no-referrer"
+                  className="w-10 lg:mr-8 cursor-pointer transition-transform duration-300 hover:scale-110 rounded-full"
                   onClick={userDetails}
                   alt="User"
                 />
@@ -74,7 +77,7 @@ export default function Navbar() {
                   id="user"
                 >
                   <p className="font-bold pb-2 border-b border-gray-700">
-                    Name: {user.username.split(" ")[0]}
+                    Name: {user.name.split(" ")[0]}
                   </p>
                   <p className="font-bold mt-2">Email: {user.email}</p>
                   <button
@@ -88,11 +91,11 @@ export default function Navbar() {
               </div>
             ) : (
               <Link
-                href="/login"
+                href="/signin"
                 className="text-white hover:text-gray-800 bg-primary hover:bg-white font-medium 
                   rounded-lg text-sm px-4 py-2 cursor-pointer"
               >
-                Login
+                Sign In
               </Link>
             )
           )}

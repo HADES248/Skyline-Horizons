@@ -1,31 +1,28 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request) {
+  const { pathname } = request.nextUrl;
 
-  // getting the current pathname
-  const path = request.nextUrl.pathname;
+  const isPublicPath =
+    pathname === "/signin" || pathname === "/signup";
 
-  // if it is a public path user should not be able to access these paths
-  const isPublicPath = path === '/login' || path === '/signup';
+  // Better Auth session cookie
+  const sessionCookie =
+    request.cookies.get("better-auth.session_token");
 
-  const token = request.cookies.get('token')?.value || '';
+  const isSignedIn = !!sessionCookie;
 
-  if (isPublicPath && token) {
-    return NextResponse.redirect(new URL('/', request.nextUrl))
+  if (isPublicPath && isSignedIn) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (!isPublicPath && !token) {
-    return NextResponse.redirect(new URL('/login', request.nextUrl))
+  if (!isPublicPath && !isSignedIn) {
+    return NextResponse.redirect(new URL("/signin", request.url));
   }
+
+  return NextResponse.next();
 }
 
-
-// On what route you want to run your middleware
 export const config = {
-  matcher: [
-    '/enlist', // protected route
-    '/login',
-    '/signup'
-  ]
-}
+  matcher: ["/enlist", "/signin", "/signup"],
+};

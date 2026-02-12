@@ -9,7 +9,10 @@ export const auth = betterAuth({
   database: mongodbAdapter(db, {
     client
   }),
-  baseURL: process.env.BETTER_AUTH_URL,
+  emailAndPassword: {
+    enabled: true,
+  },
+  baseURL: 'http://localhost:3000',
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,

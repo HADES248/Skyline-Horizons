@@ -1,12 +1,10 @@
 'use client';
 import { UserContext } from "@/context/user";
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { useContext, useState } from "react";
 
 export default function SignupForm() {
-
-  const router = useRouter();
 
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,42 +16,31 @@ export default function SignupForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const userData = {
-      username,
-      email,
-      password,
-      phone
-    }
-
-    const response = await fetch("/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
+    const { data, error } = await authClient.signUp.email({
+      name: username,
+      email: email,
+      password: password,
+      callbackURL: "/",
+    }, {
+      onRequest: () => {
+        console.log('making request...')
+      }, onSuccess: () => {
+        console.log('Request Successful');
       },
-      body: JSON.stringify(userData)
-    });
-
-    if (response.ok) {
-      setUser(userData);
-      router.push("/");
-      alert("Welcome! " + userData.username);
-    } else {
-      const data = await response.json();
-      console.log(data);
-      if (data.message === "User already exists") {
-        setUserExists(true);
+      onError: (ctx) => {
+        console.log('Error!', ctx)
       }
-    }
+    });
+    setUser(data.user);
+    redirect('/');
   }
 
   const handleGoogleSignIn = async () => {
-    const data = await authClient.signIn.social({
+    await authClient.signIn.social({
       provider: "google",
     });
+  };
 
-    console.log(data);
-  }
 
   return (
     <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>

@@ -1,11 +1,8 @@
 'use client';
-import { UserContext } from "@/context/user";
-import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { authClient } from "@/lib/auth-client";
+import { useState } from "react";
 
-export default function LoginForm() {
-
-  const router = useRouter();
+export default function SignInForm() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,41 +10,25 @@ export default function LoginForm() {
   const [emailCheck, setEmailCheck] = useState(false);
   const [passwordCheck, setpasswordCheck] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { setUser } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const loginData = {
+    const { data, error } = await authClient.signIn.email({
       email,
       password,
-      remember
-    }
-
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
+      rememberMe: remember,
+      callbackURL: "/",
+    }, {
+      onRequest: () => {
+        console.log('making request...')
+      }, onSuccess: () => {
+        console.log('Request Successful');
       },
-      body: JSON.stringify(loginData)
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      setRemeber(true);
-      setEmailCheck(false);
-      setpasswordCheck(false);
-      router.push("/");
-      setUser(data.user);
-      alert("Welcome! " + data.user.username);
-    } else {
-      const errorData = await response.json();
-      if (errorData.message === "User Does not exist") {
-        setEmailCheck(true);
-      } else if (errorData.message === "Password is incorrect") {
-        setpasswordCheck(true);
+      onError: (ctx) => {
+        console.log('Error!', ctx)
       }
-    }
+    });
   }
 
   return (
