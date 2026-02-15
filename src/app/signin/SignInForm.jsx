@@ -14,7 +14,7 @@ export default function SignInForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data, error } = await authClient.signIn.email({
+    await authClient.signIn.email({
       email,
       password,
       rememberMe: remember,

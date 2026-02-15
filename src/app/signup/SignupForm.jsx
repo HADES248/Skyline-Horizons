@@ -16,24 +16,31 @@ export default function SignupForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data, error } = await authClient.signUp.email({
-      name: username,
-      email: email,
-      password: password,
-      callbackURL: "/",
-    }, {
-      onRequest: () => {
-        console.log('making request...')
-      }, onSuccess: () => {
-        console.log('Request Successful');
+
+    const { data, error } = await authClient.signUp.email(
+      {
+        name: username,
+        email,
+        password,
+        phone,
+        callbackURL: "/",
       },
-      onError: (ctx) => {
-        console.log('Error!', ctx)
+      {
+        onRequest: () => {
+          console.log("making request...");
+        },
+        onSuccess: () => {
+          console.log("Request Successful");
+        },
+        onError: (ctx) => {
+          console.log("Error!", ctx);
+        },
       }
-    });
-    setUser(data.user);
-    redirect('/');
-  }
+    );
+    if (error) return;
+    redirect("/verify-email");
+  };
+
 
   const handleGoogleSignIn = async () => {
     await authClient.signIn.social({
