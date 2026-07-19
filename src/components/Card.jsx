@@ -12,30 +12,37 @@ export default function PropertyCard({ properties, loading }) {
           <Link
             href={`/${property._id}`}
             key={property._id}
-            className="flex flex-col w-full h-[400px] bg-gradient-to-l from-teal-600 to-primary rounded-2xl shadow-lg text-white hover:shadow-2xl cursor-pointer transform hover:scale-105 transition-all duration-300 ease-in-out"
+            className="group flex flex-col w-full h-[400px] bg-ink-2 rounded-2xl overflow-hidden
+              border border-white/[0.06] hover:border-gold/40
+              shadow-lg shadow-black/20 hover:shadow-2xl hover:shadow-black/30
+              cursor-pointer transform hover:-translate-y-1 transition-all duration-300 ease-in-out"
           >
-            <div className="w-full h-48 relative">
+            <div className="w-full h-48 relative shrink-0 bg-ink-3">
               {property.images.length > 0 && (
                 <Image
-                  className="rounded-t-2xl object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                   src={property.images[0].url}
                   alt={property.images[0].alt || property.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
                 />
               )}
-            </div>
-
-            <div className="p-6 flex flex-col flex-grow">
-              <span className="block text-xl font-semibold text-gray-100 mb-2">
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-2 via-transparent to-transparent" />
+              <span className="absolute top-3 left-3 spec-mono text-xs font-medium px-2.5 py-1 rounded-full bg-ink/80 backdrop-blur-sm text-gold border border-gold/30">
                 ₹ {property.price}
               </span>
-              <h2 className="text-2xl font-bold mb-3 line-clamp-1">
+            </div>
+
+            <div className="p-5 flex flex-col flex-grow min-h-0">
+              <h2 className="font-display text-xl font-semibold text-paper mb-2 line-clamp-1">
                 {property.title}
               </h2>
-              <p className="text-lg text-gray-200 line-clamp-2">
+              <p className="text-sm text-mist leading-relaxed line-clamp-2">
                 {property.description}
               </p>
+              <span className="mt-auto pt-3 text-sm font-medium text-gold opacity-0 group-hover:opacity-100 transition-opacity">
+                View details &rarr;
+              </span>
             </div>
           </Link>
         ))

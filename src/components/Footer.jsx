@@ -1,26 +1,30 @@
 import Link from "next/link"
+
 export default function Footer() {
   return (
-      <footer className="rounded-t-lg shadow-sm bg-gray-900">
-        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <footer className="bg-ink border-t border-white/[0.06]">
+        <div className="w-full max-w-screen-xl mx-auto px-4 py-10 md:py-12">
           <div className="sm:flex sm:items-center sm:justify-between">
-            <Link href="/" className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-cyan-300 to-85% to-primary bg-clip-text text-transparent">Skyline Horizons</Link>
-            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 text-gray-400">
+            <Link href="/" className="self-center font-display text-2xl font-semibold tracking-tight whitespace-nowrap bg-gradient-to-r from-gold-soft to-gold bg-clip-text text-transparent">
+              Skyline Horizons
+            </Link>
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 sm:mt-0 text-sm text-mist">
               <li>
-                <a href="/about" className="hover:underline me-4 md:me-6">About</a>
+                <a href="/about" className="hover:text-gold transition-colors">About</a>
               </li>
               <li>
-                <a href="/property" className="hover:underline me-4 md:me-6">Property</a>
+                <a href="/property" className="hover:text-gold transition-colors">Property</a>
               </li>
               <li>
-                <a href="/contact" className="hover:underline">Contact</a>
+                <a href="/contact" className="hover:text-gold transition-colors">Contact</a>
               </li>
             </ul>
           </div>
-          <hr className="my-4 sm:mx-auto border-gray-700 lg:my-6" />
-          <span className="block text-sm sm:text-center text-gray-400">© 2025 Skyline Horizons™. All Rights Reserved.</span>
+          <hr className="my-6 border-white/[0.08]" />
+          <span className="block text-sm text-mist-dim spec-mono">
+            © 2025 Skyline Horizons. All rights reserved.
+          </span>
         </div>
       </footer>
   )
 }
-

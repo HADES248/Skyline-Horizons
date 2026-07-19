@@ -1,28 +1,52 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
+/*
+  Skyline Horizons design tokens.
+  Concept: the page alternates between "night" sections (--color-ink, the sky)
+  and "day" sections (--color-paper, daylight) the way a skyline sits on a
+  horizon — separated by the gold horizon-line divider used throughout.
+*/
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-primary: #6366f1;
+  --font-sans: 'Inter', var(--font-geist-sans), sans-serif;
+  --font-display: 'Space Grotesk', var(--font-geist-sans), sans-serif;
+  --font-mono: 'JetBrains Mono', var(--font-geist-mono), monospace;
+
+  /* Night surfaces */
+  --color-ink: #0A1022;
+  --color-ink-2: #131B33;
+  --color-ink-3: #1C2745;
+
+  /* Day surfaces */
+  --color-paper: #FAF7F1;
+  --color-paper-2: #F1ECE1;
+
+  /* Horizon accent (dusk gradient: cool sky fading to warm light) */
+  --color-primary: #F0A544;
+  --color-gold: #F0A544;
+  --color-gold-soft: #F7C688;
+  --color-ember: #E2703A;
+  --color-dusk-blue: #3A4C82;
+
+  /* Text on dark */
+  --color-mist: #B9C4DA;
+  --color-mist-dim: #7C88A6;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-ink);
+  --foreground: var(--color-paper);
   --breakpoint-2xl: 1500px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: linear-gradient(to right, rgb(99, 187, 183) 11.2%, rgba(110, 123, 251, 1) 91.1%);
-    --foreground: #ededed;
-  }
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-sans);
 }
 
 body::-webkit-scrollbar {
@@ -33,6 +57,10 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
 }
 
 h1 {
@@ -47,5 +75,28 @@ h1 {
   .container {
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* Numeric / price / label treatment — reads like a blueprint annotation */
+.spec-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton-shimmer {
+  background-image: linear-gradient(90deg, var(--color-ink-2) 0px, var(--color-ink-3) 40px, var(--color-ink-2) 80px);
+  background-size: 600px 100%;
+  animation: shimmer 1.6s infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer {
+    animation: none;
   }
 }

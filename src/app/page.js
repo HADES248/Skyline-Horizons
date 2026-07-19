@@ -4,168 +4,191 @@ import Footer from '../components/Footer';
 import SearchBar from '@/components/SearchBar';
 import HouseList from './HouseList';
 
+const stats = [
+  { value: '1000+', label: 'Premium homes' },
+  { value: '80%', label: 'Properties sold' },
+  { value: '20+', label: 'Awards won' },
+];
+
+const reviews = [
+  {
+    title: 'Exceptional experience, intuitive design',
+    quote: 'The website offers a seamless browsing experience with user-friendly navigation. It simplifies property searches effectively.',
+    rating: 'https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-45_e9g5pf.png',
+    name: 'Jack Quad',
+    role: 'Buyer',
+  },
+  {
+    title: 'Solid foundation for any transaction',
+    quote: "Whether you're buying or renting a property, their process is seamless.",
+    rating: 'https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-50_sx3gqf.png',
+    name: 'William Dafoe',
+    role: 'Buyer',
+  },
+  {
+    title: 'Transparent, accurate listings',
+    quote: 'Provides accurate details about properties. The transparency builds trust and helps buyers decide with confidence.',
+    rating: 'https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-50_sx3gqf.png',
+    name: 'Chandler Bing',
+    role: 'Renter',
+  },
+  {
+    title: 'Direct, efficient collaboration',
+    quote: 'Facilitates direct communication with property owners and agents, saving time and eliminating unnecessary brokerage fees.',
+    rating: 'https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405248/rating-40_diobjy.png',
+    name: 'Joey Tribbiani',
+    role: 'Property seller',
+  },
+];
+
 export default function Home() {
   return (
     <>
-      <div className="container flex flex-col lg:flex-row items-center justify-between">
-        <div className="w-auto lg:w-[70%] mx-auto">
-          <Image
-            src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405253/front-page_k9xcmr.jpg"
-            alt="home image"
-            width={1150}
-            height={764}
-            quality={100}
-            priority={true}
-            className="lg:rounded-br-xl 2xl:rounded-b-xl" />
-        </div>
-        <div className="md:w-1/2 flex justify-center items-center flex-col ml-4 md:ml-10 pr-6">
-          <h1 className="text-xl md:text-2xl mt-5 mb-5 font-bold">Welcome to Skyline Horizons</h1>
-
-          <SearchBar />
-
-          <div className="flex justify-between flex-col sm:flex-row gap-5 mt-10">
-            <div className="flex flex-col items-start justify-center">
-              <dt className="mb-2 text-3xl font-extrabold">1000+</dt>
-              <dd>Premium Houses</dd>
-            </div>
-            <div className="flex flex-col items-start justify-center">
-              <dt className="mb-2 text-3xl font-extrabold">80%</dt>
-              <dd >Properties Sold!</dd>
-            </div>
-            <div className="flex flex-col items-start justify-center">
-              <dt className="mb-2 text-3xl font-extrabold">20+</dt>
-              <dd >Awards Won</dd>
+      {/* ============ HERO — night ============ */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-ink via-ink to-ink-2">
+        <div className="pointer-events-none absolute -top-32 right-0 w-[600px] h-[600px] rounded-full bg-gold/10 blur-3xl" />
+        <div className="container relative flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-6 pt-10 lg:pt-16 pb-16">
+          <div className="w-full lg:w-[55%]">
+            <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/40">
+              <Image
+                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405253/front-page_k9xcmr.jpg"
+                alt="Modern home at dusk"
+                width={1150}
+                height={764}
+                quality={100}
+                priority={true}
+                className="w-full h-auto"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
             </div>
           </div>
-        </div>
-      </div>
-      <div className="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-4 justify-items-center items-center mt-14 mb-10">
-        <div className="w-[180px] lg:w-[220px]">
-          <Image src="no-broker.svg"
-            width={250}
-            height={250}
-            alt="no-broker logo"
-          />
-        </div>
-        <div className="w-[180px] lg:w-[220px]">
-          <Image src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/realty_qir6ec.png"
-            width={250}
-            height={250}
-            alt="realty logo"
-          />
-        </div>
-        <div className="w-[180px] lg:w-[220px]">
-          <Image src="zillow.svg"
-            width={250}
-            height={250}
-            alt="zillow logo"
-          />
-        </div>
-        <div className="w-[180px] lg:w-[220px]">
-          <Image src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405244/equinix_c2lb4p.png"
-            width={250}
-            height={250}
-            alt="equinix logo"
-          />
-        </div>
-      </div>
-      <div className="container">
-        <h1 className="font-bold mt-10 mb-12 ml-7 sm:ml-10 underline underline-offset-2 decoration-4 decoration-primary text-white tracking-wide">
-          Most Popular Residences
-        </h1>
 
-        {/* Houses */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 justify-center items-center w-[95%] mx-auto">
-          {/* Loading Houses */}
-          <HouseList />
-        </div>
+          <div className="w-full lg:w-[45%] flex flex-col items-center text-center lg:items-start lg:text-left lg:pl-6">
+            <span className="spec-mono text-xs tracking-[0.2em] text-gold uppercase mb-4">
+              Premium real estate
+            </span>
+            <h1 className="font-display text-3xl md:text-5xl font-semibold leading-[1.1] text-paper mb-5">
+              Find your place<br />on the horizon
+            </h1>
+            <p className="text-mist text-base md:text-lg mb-8 max-w-md mx-auto lg:mx-0">
+              Browse premium houses and villas, connect directly with owners and agents, and close with confidence.
+            </p>
 
-        {/* Reviews */}
-        <div className="m-4">
-          <h1 className="flex justify-center items-center font-bold mb-7 underline underline-offset-2 decoration-4 decoration-primary text-white tracking-wide">
-            Reviews
-          </h1>
+            <SearchBar />
 
-          <div className="grid mb-8 shadow-lg md:shadow-xs rounded-xl bg-gradient-to-br from-primary to-cyan-600 md:mb-12 md:grid-cols-2">
-            <figure className="flex flex-col items-center justify-center p-8 text-center border-b rounded-tl-lg md:rounded-ss-lg md:border-e border-gray-300 bg-transparent">
-              <blockquote className="max-w-2xl mx-auto mb-4 lg:mb-8 text-gray-300">
-                <h3 className="text-lg font-semibold text-white">Exceptional User Experience and Intuitive Design</h3>
-                <p className="my-2">The website offers a seamless browsing experience with user-friendly navigation. It simplifies property searches effectively.&#34;</p>
-              </blockquote>
-              <Image
-                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-45_e9g5pf.png"
-                className="w-36 mb-8"
-                width={80}
-                height={80}
-                quality={100}
-                alt='ratings 4.5' />
-              <figcaption className="flex items-center justify-center">
-                <div className="font-medium text-white">
-                  <div>Jack Quad</div>
-                  <div className="text-sm text-gray-300">Buyer</div>
+            <dl className="flex flex-wrap justify-center text-center lg:justify-start lg:text-left gap-x-10 gap-y-6 mt-12">
+              {stats.map((stat) => (
+                <div key={stat.label} className="flex flex-col items-center lg:items-start">
+                  <dt className="spec-mono text-3xl font-semibold text-gold mb-1">{stat.value}</dt>
+                  <dd className="text-sm text-mist-dim">{stat.label}</dd>
                 </div>
-              </figcaption>
-            </figure>
-            <figure className="flex flex-col items-center justify-center p-8 text-center border-b md:rounded-se-lg border-gray-300 bg-transparent">
-              <blockquote className="max-w-2xl mx-auto mb-4 lg:mb-8 text-gray-300">
-                <h3 className="text-lg font-semibold text-white">Solid foundation for any transaction</h3>
-                <p className="my-2">Whether you&#39;re buying or renting a property, their procedure is seamless!</p>
-              </blockquote>
-              <Image
-                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-50_sx3gqf.png"
-                className="w-36 mb-8"
-                width={80}
-                height={80}
-                quality={100}
-                alt='ratings 5' />
-              <figcaption className="flex items-center justify-center">
-                <div className=" font-medium text-white ms-3">
-                  <div>Willam Dafoe</div>
-                  <div className="text-sm text-gray-300">Buyer</div>
-                </div>
-              </figcaption>
-            </figure>
-            <figure className="flex flex-col items-center justify-center p-8 text-center border-b md:rounded-es-lg md:border-b-0 md:border-e border-gray-300 bg-transparent">
-              <blockquote className="max-w-2xl mx-auto mb-4 lg:mb-8 text-gray-300">
-                <h3 className="text-lg font-semibold text-white">Comprehensive Property Information and Transparency</h3>
-                <p className="my-2">Provides accurate details about properties. The transparency builds trust and ensures informed decision-making for buyers and renters.&#34;</p>
-              </blockquote>
-              <Image
-                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/rating-50_sx3gqf.png"
-                className="w-36 mb-8"
-                width={80}
-                height={80}
-                quality={100}
-                alt='ratings 5.0 1' />
-              <figcaption className="flex items-center justify-center">
-                <div className="font-medium text-white">
-                  <div>Chandler Bing</div>
-                  <div className="text-sm text-gray-300">Renter</div>
-                </div>
-              </figcaption>
-            </figure>
-            <figure className="flex flex-col items-center justify-center p-8 text-center rounded-b-lg md:rounded-se-lg bg-tranparent">
-              <blockquote className="max-w-2xl mx-auto mb-4 lg:mb-8 text-gray-300">
-                <h3 className="text-lg font-semibold text-white">Efficient Collaborating</h3>
-                <p className="my-2">Facilitates direct communication with property owners and agents. This feature saves time and eliminates unnecessary brokerage fees.&#34;</p>
-              </blockquote>
-              <Image
-                src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405248/rating-40_diobjy.png"
-                className="w-36 mb-8"
-                width={80}
-                height={80}
-                quality={100}
-                alt='ratings 4.0' />
-              <figcaption className="flex items-center justify-center">
-                <div className="font-medium text-white">
-                  <div>Joey Tribbiani</div>
-                  <div className="text-sm text-gray-300">Property Seller</div>
-                </div>
-              </figcaption>
-            </figure>
+              ))}
+            </dl>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* ============ PARTNER LOGOS ============ */}
+      <section className="bg-ink-2 border-y border-white/[0.06]">
+        <div className="container grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-4 justify-items-center items-center py-12">
+          <div className="w-full max-w-[170px] flex items-center justify-center p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-gold/30 transition-all duration-300">
+            <Image
+              src="no-broker.svg"
+              width={250}
+              height={250}
+              alt="No Broker logo"
+              className="grayscale brightness-0 invert opacity-40 hover:opacity-80 transition-opacity duration-300"
+            />
+          </div>
+          <div className="w-full max-w-[170px] flex items-center justify-center p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-gold/30 transition-all duration-300">
+            <Image
+              src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405249/realty_qir6ec.png"
+              width={250}
+              height={250}
+              alt="Realty logo"
+              className="grayscale brightness-0 invert opacity-40 hover:opacity-80 transition-opacity duration-300"
+            />
+          </div>
+          <div className="w-full max-w-[170px] flex items-center justify-center p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-gold/30 transition-all duration-300">
+            <Image
+              src="zillow.svg"
+              width={250}
+              height={250}
+              alt="Zillow logo"
+              className="grayscale brightness-0 invert opacity-40 hover:opacity-80 transition-opacity duration-300"
+            />
+          </div>
+          <div className="w-full max-w-[170px] flex items-center justify-center p-5 rounded-xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-gold/30 transition-all duration-300">
+            <Image
+              src="https://res.cloudinary.com/dy2p8ntuj/image/upload/v1757405244/equinix_c2lb4p.png"
+              width={250}
+              height={250}
+              alt="Equinix logo"
+              className="grayscale brightness-0 invert opacity-40 hover:opacity-80 transition-opacity duration-300"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ============ POPULAR RESIDENCES — night ============ */}
+      <section className="bg-ink">
+        <div className="container pt-14 pb-16">
+          <div className="flex items-end justify-between mb-10 px-2">
+            <div>
+              <span className="spec-mono text-xs tracking-[0.2em] text-gold uppercase">Curated listings</span>
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-paper mt-2">
+                Most popular residences
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <HouseList />
+          </div>
+        </div>
+      </section>
+
+      {/* ============ REVIEWS ============ */}
+      <section className="bg-ink">
+        <div className="container py-16">
+          <div className="text-center mb-10">
+            <span className="spec-mono text-xs tracking-[0.2em] text-gold uppercase">Word on the street</span>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-paper mt-2">Reviews</h2>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {reviews.map((review) => (
+              <figure
+                key={review.name}
+                className="flex flex-col p-8 rounded-2xl bg-ink-2 border border-white/[0.06] hover:border-gold/30 transition-colors duration-300"
+              >
+                <span className="font-display text-4xl text-gold/70 leading-none mb-3">&ldquo;</span>
+                <blockquote className="mb-6">
+                  <h3 className="font-display text-lg font-semibold text-paper mb-2">{review.title}</h3>
+                  <p className="text-mist text-sm leading-relaxed">{review.quote}</p>
+                </blockquote>
+                <figcaption className="mt-auto flex items-center justify-between pt-4 border-t border-white/[0.08]">
+                  <div>
+                    <div className="font-medium text-paper text-sm">{review.name}</div>
+                    <div className="text-xs text-mist-dim">{review.role}</div>
+                  </div>
+                  <div className="bg-transparent rounded-md px-1.5 py-1">
+                    <Image
+                      src={review.rating}
+                      className="w-20 h-auto"
+                      width={80}
+                      height={20}
+                      quality={100}
+                      alt={`Rating for ${review.name}`}
+                    />
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </>
   );
